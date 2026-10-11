@@ -23,12 +23,13 @@ void printVector(const vector<int> &A)
     cout << endl;
 }
 
-vector<int> generateRandomVector(int size, int delta)
+vector<int> generateRandomVector(int size, int delta, bool negative = true)
 {
     random_device rd;
     mt19937 gen(rd());
-    uniform_int_distribution<int> distrib(-delta, delta);
+    int rangeL = negative ? -delta : 0;
 
+    uniform_int_distribution<int> distrib(rangeL, delta);
     vector<int> random_res;
     random_res.reserve(size);
 
@@ -68,7 +69,7 @@ bool verifySorted(vector<int> v)
     return true;
 }
 
-chrono::duration<double, std::milli> funcExecutionTime(void (*func)(vector<int>&), vector<int>& v)
+chrono::duration<double, std::milli> funcExecutionTime(void (*func)(vector<int> &), vector<int> &v)
 {
     auto start = chrono::high_resolution_clock::now();
     func(v);

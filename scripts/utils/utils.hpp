@@ -4,7 +4,7 @@
 using namespace std;
 
 void printVector(const std::vector<int>& A);
-vector<int> generateRandomVector(int size, int max_val);
+vector<int> generateRandomVector(int size, int delta, bool negative = true);
 int maxValueIndex(vector<int> v, int end_pos);
 bool verifySorted(vector<int> v);
 
