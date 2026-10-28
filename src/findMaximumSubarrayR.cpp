@@ -66,12 +66,12 @@ vector<int> findMaximumSubarrayR(int start, int end, vector<int> &A)
 
 int main()
 {
-    vector<int> ipt = generateRandomVector(20000, 100000);
+    vector<int> ipt = generateRandVec(20000, 100000);
     auto start = chrono::high_resolution_clock::now();
     vector<int> res = findMaximumSubarrayR(0, ipt.size() - 1, ipt);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, std::milli> exeTime = end - start;
-    printVector(ipt);
+    printVec(ipt);
     cout << "start=" << res[0] << " (" << ipt[res[0]] << ") end=" << res[1] << " (" << ipt[res[1]] << ") sum=" << res[2] << endl;
     cout << "findMaximumSubarayR: " << exeTime << endl;
 }

@@ -1,8 +1,17 @@
 #include <iostream>
 #include <vector>
-#include "../utils/utils.hpp"
+#include <string>
+#include "utils/utils.hpp"
 
 using namespace std;
+
+int concSmaller(int n1, int n2)
+{
+    auto s1 = to_string(n1);
+    auto s2 = to_string(n2);
+
+    return (s1 + s2 < s2 + s1) ? n1 : n2;
+}
 
 void merge(vector<int> &A, int p, int q, int r)
 {
@@ -32,7 +41,7 @@ void merge(vector<int> &A, int p, int q, int r)
             A[i] = R[k];
             k++;
         }
-        else if (k == nr || L[j] <= R[k])
+        else if (k == nr || concSmaller(L[j], R[k]) == L[j])
         {
             A[i] = L[j];
             j++;
@@ -44,6 +53,7 @@ void merge(vector<int> &A, int p, int q, int r)
         }
     }
 }
+
 
 void mergeSortHelper(vector<int> &A, int p, int r)
 {
@@ -57,17 +67,28 @@ void mergeSortHelper(vector<int> &A, int p, int r)
     }
 }
 
-void mergeSort(vector<int>& ipt)
+void mergeSort(vector<int> &ipt)
 {
     mergeSortHelper(ipt, 0, ipt.size());
 }
 
+string largeNumConc(const vector<int> &v)
+{
+    vector<int> u = v;
+    mergeSort(u);
+
+    string out = "";
+    for (int i = u.size() - 1; i >= 0; --i)
+    {
+        out += to_string(u[i]);
+    }
+
+    return out;
+}
+
 int main()
 {
-    vector<int> ipt = generateRandomVector(20000, 100000);
-    auto exeTime = funcExecutionTime(mergeSort, ipt);
-    printVector(ipt);
-
-    cout << "Verification: " << verifySorted(ipt) << endl;
-    cout << "Time: " <<  exeTime  << endl;
+    vector<int> ipt = generateRandVec(20000, 100000, false);
+    printVec(ipt);
+    cout << largeNumConc(ipt) << endl;
 }

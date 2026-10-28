@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "../utils/utils.hpp"
+#include "../../utils/utils.hpp"
 
-using namespace std;
 
 void quickSortHelper(vector<int> &v, int p, int q)
 {
@@ -36,11 +35,11 @@ void quickSort(vector<int> &v)
 
 int main()
 {
-    vector<int> ipt = generateRandomVector(20000, 100000);
-    auto exeTime = funcExecutionTime(quickSort, ipt);
+    vector<int> ipt = generateRandVec(20000, 100000);
+    auto exeTime = sortingFuncExecTime(quickSort, ipt);
 
-    printVector(ipt);
+    printVec(ipt);
 
-    cout << "Verification: " << verifySorted(ipt) << endl;
+    cout << "Verification: " << verifySortedVec(ipt) << endl;
     cout << "Time: " << exeTime << endl;
 }

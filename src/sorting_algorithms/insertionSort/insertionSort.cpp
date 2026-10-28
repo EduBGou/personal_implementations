@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../utils/utils.hpp"
-
-using namespace std;
+#include "../../utils/utils.hpp"
 
 int binarySearchHelper(vector<int> &A, int v, int start, int end)
 {
@@ -44,10 +42,10 @@ void insertionSort(vector<int> &A)
 
 int main()
 {
-    vector<int> ipt = generateRandomVector(20000, 100000);
-    auto exeTime = funcExecutionTime(insertionSort, ipt);
-    printVector(ipt);
+    vector<int> ipt = generateRandVec(20000, 100000);
+    auto exeTime = sortingFuncExecTime(insertionSort, ipt);
+    printVec(ipt);
 
-    cout << "Verification: " << verifySorted(ipt) << endl;
+    cout << "Verification: " << verifySortedVec(ipt) << endl;
     cout << "Time: " <<  exeTime  << endl;
 }

@@ -56,7 +56,7 @@ int main()
     vector<int> res = findMaximumSubarrayI(ipt);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, std::milli> exeTime = end - start;
-    printVector(ipt);
+    printVec(ipt);
     cout << "start=" << res[0] << " (" << ipt[res[0]] << ") end=" << res[1] << " (" << ipt[res[1]] << ") sum=" << res[2] << endl;
     cout << "findMaximumSubarayI: " << exeTime << endl;
 }

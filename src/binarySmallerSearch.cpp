@@ -33,10 +33,10 @@ int closestBinarySearch(vector<int> &v, int n)
 int main()
 {
     int val = 50000;
-    vector<int> ipt = generateRandomVector(20000, 100000);
+    vector<int> ipt = generateRandVec(20000, 100000);
     sort(ipt.begin(), ipt.end());
 
     int index = closestBinarySearch(ipt, val);
-    printVector(ipt);
+    printVec(ipt);
     cout << "The index (p) of the nearest element in the sorted vector of val=" << val << " is p=" << index << ", since v[p]=" << ipt[index] << endl;
 }

@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
 
-            "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+            "program": "${fileDirname}\\${fileDirnameBasename}.exe",
 
             "args": [],
 
@@ -22,7 +22,7 @@
 
             "miDebuggerPath": "C:/DevTools/msys64/ucrt64/bin/gdb.exe",
 
-            "preLaunchTask": "C++: Build current file",
+            "preLaunchTask": "C++: Build all cpp files in folder",
 
             "setupCommands": [
                 {

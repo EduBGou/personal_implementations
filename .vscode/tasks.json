@@ -3,18 +3,8 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "C++: Build current file",
-            "command": "C:/DevTools/msys64/ucrt64/bin/g++.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "-O0",
-                "-std=c++20",
-                "${file}",
-                "${workspaceFolder}/scripts/utils/utils.cpp",
-                "-o",
-                "${workspaceFolder}/${fileBasenameNoExtension}.exe"
-            ],
+            "label": "C++: Build all cpp files in folder",
+            "command": "& 'C:/DevTools/msys64/ucrt64/bin/g++.exe' -fdiagnostics-color=always -g -O0 -std=c++20 (Get-ChildItem -Path '${fileDirname}' -Filter *.cpp | ForEach-Object { $_.FullName }) '${workspaceFolder}\\src\\utils\\utils.cpp' -o '${fileDirname}\\${fileDirnameBasename}.exe'",
             "options": {
                 "cwd": "${fileDirname}"
             },
@@ -28,13 +18,13 @@
         },
         {
             "type": "shell",
-            "label": "C++: Run current file .exe",
-            "command": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+            "label": "C++: Run current folder .exe",
+            "command": "& '${fileDirname}\\${fileDirnameBasename}.exe'",
             "options": {
                 "cwd": "${fileDirname}"
             },
             "problemMatcher": [],
-            "dependsOn": "C++: Build current file",
+            "dependsOn": "C++: Build all cpp files in folder",
             "dependsOrder": "sequence"
         }
     ]
